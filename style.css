@@ -1,0 +1,142 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+overflow: hidden;
+position: relative;
+
+}
+h1{
+    font-family: 'Mansalva', cursive;
+    font-size: 50px;
+    
+}
+.container{
+    background-color: #f8fafc;
+    width: 450px;
+    height: 450px;
+    background-image: url(treeee.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg{
+    margin-top: 10px;
+    
+   
+}
+.grafik{
+    fill: transparent;
+    stroke: black;
+    stroke-width: 5px;
+}
+.item{
+    display: none;
+}
+
+#wrong-letters{
+    position: absolute;
+    top:40%;
+    right: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: red;
+   
+}
+
+#wrong-letters span{
+    text-transform: uppercase;
+    text-decoration: line-through;
+    font-size:18px;
+    margin-bottom: 5px;
+}
+
+#word{
+display: flex;
+
+}
+
+.letter{
+    border-bottom: 3px solid limegreen;
+    margin: 0 20px;
+    font-size: 30px;
+    height: 37px;
+    width: 25px;
+}
+
+#popup-container{
+    background-color: rgba(0,0,0,0.9);
+    color: #f8fafc;
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    /*display: flex;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.popup{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-again{
+    text-align: center;
+    width: 150px;
+    margin-top: 15px;
+    padding: 5px 0;
+    border-radius: 20px;
+    border: 1px solid #ffffff82;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 600px)and (max-width: 1024px) {
+    #wrong-letters{
+       
+        right: 20%;
+    } 
+}
+
+@media screen and (max-width: 600px) {
+    #wrong-letters{
+       right: 5%;
+    } 
+}
