@@ -1,75 +1,101 @@
-const wordElement=document.getElementById("word");
-const popupContainer=document.getElementById("popup-container");
-const wrongletterElement=document.getElementById("wrong-letters");
-const successMessage=document.querySelector(".success-message");
-const items=document.querySelectorAll(".item");
+const wordElement = document.getElementById("word");
+const popupContainer = document.getElementById("popup-container");
+const wrongletterElement = document.getElementById("wrong-letters");
+const successMessage = document.querySelector(".success-message");
+const items = document.querySelectorAll(".item");
+const playAgainBtn = document.querySelector(".play-again");
 
 
-const correctLetters=[];
-const wrongLetters=[];
+let correctLetters = [];
+let wrongLetters = [];
 
-const getRandomWords=() => {
-    const words = ["html", "css", "javaScript", "react"]
-    
-    //, "Responsive", 
-// "Animation", "Framework", "Interface", "Template", "Browser", "Component",
-//  "Front-end", "User", "Mobile", "Design", "Debugging", "Element", "Content",
-//   "Layout", "React"]
-  return words[Math.floor(Math.random()*words.length)]
+const getRandomWords = () => {
+    const words = ["html", "css", "javaScript", "react", "angular"]
+    return words[Math.floor(Math.random() * words.length)]
 }
 
 
 
 
 
-const selectedWord=getRandomWords();
-const displayWords=()=>{
-  
-    wordElement.innerHTML=`
-    ${selectedWord.split('').map(letter =>`<div class="letter">${correctLetters.includes(letter) ? letter: ''}</div>`).join('')}
+let selectedWord = getRandomWords();
+
+
+const resetGame = () => {
+    correctLetters = [];
+    wrongLetters = [];
+    selectedWord = getRandomWords();
+    displayWords();
+    updateWrongLetters();
+    popupContainer.style.display = "none";
+    successMessage.innerText = "";
+    items.forEach((item) => {
+        item.style.display = "none"
+    });
+}
+
+
+const displayWords = () => {
+
+    wordElement.innerHTML = `
+    ${selectedWord.split('').map(letter =>
+        `<div class="letter">${correctLetters.includes(letter) ? letter : ''}</div>`).join('')}
     
     `
-  
-   const word=wordElement.innerText.replace(/\n/g,'');
-   console.log(word)
-   if(word===selectedWord){
-    popupContainer.style.display="flex"
-    successMessage.innerText = "Congratulations ! You won :)"
-   }
-}
-const updateWrongLetters = ()=>{
-    wrongletterElement.innerHTML=`
-    ${wrongLetters.map(letter => `<span>${letter}</span>`).join('')}`;
+    const word = wordElement.innerText.replace(/\n/g, '');
 
-
-
-
-}
-
-window.addEventListener("keydown",function(event){
-if(event.keyCode >= 65 && event.keyCode <=90){
-   const letter=event.key;
-   console.log(letter)
-
-   if(selectedWord.includes(letter)){
-      if(!correctLetters.includes(letter)){
-        correctLetters.push(letter);
-        displayWords();
-        console.log(correctLetters)
-      }else{
-        console.log("harf var")
-          }
-   }else{
-      if(!wrongLetters.includes(letter)){
-        wrongLetters.push(letter);
-       updateWrongLetters();
-      }
+    if (word === selectedWord) {
+        popupContainer.style.display = "flex"
+        successMessage.innerText = "Congratulations ! You won :) "
     }
 }
+
+
+
+const updateWrongLetters = () => {
+    wrongletterElement.innerHTML = `
+    ${wrongLetters.map(letter => `<span>${letter}</span>`).join('')}`;
+
+    items.forEach((item, index) => {
+        const errorCount = wrongLetters.length;
+
+        if (index < errorCount) {
+            item.style.display = "block"
+            if (errorCount === 6) {
+                popupContainer.style.display = "flex"
+                successMessage.innerText =
+                    `Unfortunately you lost  :(  Not found term: ${selectedWord}`
+            }
+        } else {
+            item.style.display = "none"
+        }
+    })
+
+
+}
+
+window.addEventListener("keydown", function (event) {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        const letter = event.key;
+
+
+        if (selectedWord.includes(letter)) {
+            if (!correctLetters.includes(letter)) {
+                correctLetters.push(letter);
+                displayWords();
+
+            }
+        } else {
+            if (!wrongLetters.includes(letter)) {
+                wrongLetters.push(letter);
+                updateWrongLetters();
+            }
+        }
+    }
 }
 )
 
 
-
+playAgainBtn.addEventListener("click", resetGame)
 
 displayWords()

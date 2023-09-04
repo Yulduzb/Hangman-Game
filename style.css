@@ -1,29 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
-width: 100vw;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-overflow: hidden;
-position: relative;
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
 
 }
-h1{
+
+h1 {
     font-family: 'Mansalva', cursive;
     font-size: 50px;
-    
+
 }
-.container{
+
+.container {
     background-color: #f8fafc;
     width: 450px;
     height: 450px;
@@ -35,44 +36,46 @@ h1{
     justify-content: center;
 }
 
-svg{
+svg {
     margin-top: 10px;
-    
-   
+
+
 }
-.grafik{
+
+.grafik {
     fill: transparent;
     stroke: black;
     stroke-width: 5px;
 }
-.item{
+
+.item {
     display: none;
 }
 
-#wrong-letters{
+#wrong-letters {
     position: absolute;
-    top:40%;
+    top: 40%;
     right: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: red;
-   
+
 }
 
-#wrong-letters span{
+#wrong-letters span {
     text-transform: uppercase;
     text-decoration: line-through;
-    font-size:18px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 
-#word{
-display: flex;
+#word {
+    display: flex;
 
 }
 
-.letter{
+.letter {
     border-bottom: 3px solid limegreen;
     margin: 0 20px;
     font-size: 30px;
@@ -80,12 +83,12 @@ display: flex;
     width: 25px;
 }
 
-#popup-container{
-    background-color: rgba(0,0,0,0.9);
+#popup-container {
+    background-color: rgba(0, 0, 0, 0.9);
     color: #f8fafc;
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
     /*display: flex;*/
@@ -93,15 +96,16 @@ display: flex;
     align-items: center;
     justify-content: center;
 }
-.popup{
+
+.popup {
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+
 }
 
-.play-again{
+.play-again {
     text-align: center;
     width: 150px;
     margin-top: 15px;
@@ -129,14 +133,14 @@ display: flex;
 
 
 @media (min-width: 600px)and (max-width: 1024px) {
-    #wrong-letters{
-       
+    #wrong-letters {
+
         right: 20%;
-    } 
+    }
 }
 
 @media screen and (max-width: 600px) {
-    #wrong-letters{
-       right: 5%;
-    } 
+    #wrong-letters {
+        right: 5%;
+    }
 }
