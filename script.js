@@ -101,6 +101,3 @@ playAgainBtn.addEventListener("click", resetGame)
 displayWords()
 
 
-const fruits=["elma", "armut"];
-fruits.push("kivi");
-console.log(fruits);
